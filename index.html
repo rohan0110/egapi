@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Drive API Integration</title>
+  </head>
+  <body>
+    <h1>Files in My Google Drive</h1>
+    <ul>
+      {% for file in files %}
+        <li><a href="{{ url_for('download', file_id=file.id) }}">{{ file.name }}</a></li>
+      {% endfor %}
+    </ul>
+    <hr>
+    <h2>Upload a File</h2>
+    <form method="post" enctype="multipart/form-data" action="{{ url_for('upload') }}">
+      <input type="file" name="file">
+      <br>
+      <input type="submit" value="Upload">
+    </form>
+  </body>
+</html>
